@@ -19,7 +19,7 @@ const SYMBOLS_COUNT = {
     "D": 8
 };
 
-const SYMBOLS_VALUES = {
+const SYMBOL_VALUES = {
     "A": 5,
     "B": 4,
     "C": 3,
@@ -85,6 +85,7 @@ const spin = () => {
             reelSymbols.splice(randomIndex, 1);
         }
     }
+
     return reels;
 }
 
@@ -98,7 +99,24 @@ const transpose = (reels) => {
         }
     }
 
-    return rows
+    return rows;
+}
+
+const printRows = (rows) => {
+    for (const row of rows){
+        let rowString = "";
+        for (const [i, symbol] of row.entries()){
+            rowString += symbol;
+            if (i != row.length -1){
+                rowString += " | ";
+            }
+        }
+        console.log(rowString);
+    }
+}
+
+const getWinnings = (rows, bet, lines) => {
+
 }
 
 let balance = deposit();
@@ -106,3 +124,4 @@ const numberOfLines = getNumberOfLines();
 const bet = getBet(balance, numberOfLines);
 const reels = spin();
 const rows = transpose(reels);
+printRows(rows);
